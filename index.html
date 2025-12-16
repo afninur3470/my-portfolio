@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Profesional - Nur Afni</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Palette Warna Premium */
+            --primary-dark: #020617;
+            --primary: #0f172a;        /* Navy Profesional */
+            --accent: #2563eb;         /* Royal Blue */
+            --accent-light: #eff6ff;
+            --gold: #d97706;           /* Gold Award */
+            --gold-light: #fffbeb;
+            --success: #059669;        /* Emerald Green */
+            --rose: #e11d48;           /* Rose (Sastra) */
+            --rose-light: #fff1f2;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --bg-body: #f8fafc;
+            --shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 20px 40px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-body); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+        h1, h2, h3, h4, h5 { font-family: 'Outfit', sans-serif; }
+
+        /* --- UTILITIES --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+        .section-padding { padding: 6rem 0; }
+        .text-accent { color: var(--accent); }
+        
+        /* Badges */
+        .badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 50px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px; }
+        .badge-gold { background: var(--gold-light); color: #b45309; border: 1px solid #fcd34d; }
+        .badge-blue { background: var(--accent-light); color: #1e40af; border: 1px solid #bfdbfe; }
+        .badge-green { background: #ecfdf5; color: #047857; border: 1px solid #6ee7b7; }
+
+        /* --- NAVIGATION --- */
+        nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #e2e8f0; }
+        .nav-inner { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .logo { font-size: 1.6rem; font-weight: 800; color: var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .logo i { color: var(--accent); }
+        .nav-menu { display: flex; gap: 2rem; list-style: none; }
+        .nav-link { text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.95rem; transition: 0.3s; position: relative; }
+        .nav-link:hover { color: var(--accent); }
+        .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background: var(--accent); transition: 0.3s; }
+        .nav-link:hover::after { width: 100%; }
+        .btn-contact { background: var(--primary); color: white; padding: 0.7rem 1.8rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.3s; box-shadow: 0 4px 10px rgba(15, 23, 42, 0.2); }
+        .btn-contact:hover { background: var(--accent); transform: translateY(-2px); }
+
+        /* --- HERO SECTION --- */
+        .hero { min-height: 100vh; display: flex; align-items: center; background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 60%, #fffbeb 100%); padding-top: 80px; position: relative; overflow: hidden; }
+        .hero-content { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 2; }
+        
+        .hero-labels { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 1.5rem; }
+        .hero h1 { font-size: 3.5rem; line-height: 1.1; color: var(--primary-dark); font-weight: 800; margin-bottom: 1.5rem; }
+        .hero h1 span { color: var(--accent); }
+        .hero p { font-size: 1.15rem; color: var(--text-light); margin-bottom: 2.5rem; max-width: 600px; }
+        
+        .hero-stats { display: flex; gap: 2rem; background: white; padding: 1.5rem; border-radius: 16px; box-shadow: var(--shadow-card); border: 1px solid #e2e8f0; margin-bottom: 2rem; width: fit-content; }
+        .stat h4 { font-size: 1.8rem; font-weight: 800; color: var(--primary); line-height: 1; }
+        .stat p { font-size: 0.85rem; color: var(--text-light); font-weight: 600; margin-top: 5px; }
+        .stat-divider { width: 1px; background: #e2e8f0; }
+
+        .btn-group { display: flex; gap: 1rem; }
+        .btn-primary { background: var(--accent); color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; border: none; }
+        .btn-primary:hover { background: var(--primary); transform: translateY(-3px); }
+        .btn-outline { border: 2px solid var(--primary); color: var(--primary); padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
+        .btn-outline:hover { background: var(--primary); color: white; }
+
+        .hero-img-box { position: relative; display: flex; justify-content: center; }
+        .hero-img { width: 100%; max-width: 420px; border-radius: 20px; transform: rotate(-3deg); border: 4px solid white; box-shadow: 20px 20px 0 rgba(37, 99, 235, 0.1); transition: 0.5s; object-fit: cover; }
+        .hero-img:hover { transform: rotate(0deg); box-shadow: 10px 10px 0 rgba(37, 99, 235, 0.2); }
+
+        /* --- SECTION HEADERS --- */
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-header h2 { font-size: 2.5rem; font-weight: 800; color: var(--primary); position: relative; display: inline-block; }
+        .section-header h2::after { content: ''; display: block; width: 60px; height: 5px; background: var(--accent); margin: 10px auto 0; border-radius: 10px; }
+        .section-header p { color: var(--text-light); font-size: 1.1rem; margin-top: 10px; }
+
+        /* --- ABOUT --- */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; background: white; padding: 3rem; border-radius: 24px; box-shadow: var(--shadow-card); }
+        .education-list { list-style: none; margin-top: 1.5rem; }
+        .education-list li { display: flex; gap: 15px; margin-bottom: 1.5rem; }
+        .edu-icon { width: 40px; height: 40px; background: var(--accent-light); color: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+        .edu-info h5 { font-size: 1.1rem; font-weight: 700; color: var(--primary); }
+        
+        /* --- PORTFOLIO (GALLERY) --- */
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem; }
+        .project-card { background: white; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-card); transition: 0.4s; border: 1px solid #e2e8f0; display: flex; flex-direction: column; }
+        .project-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); border-color: var(--accent); }
+        
+        .project-img-wrapper { height: 220px; overflow: hidden; position: relative; background: #f1f5f9; border-bottom: 1px solid #e2e8f0; }
+        .project-img-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        /* Khusus untuk gambar aplikasi/bot agar fit contain */
+        .project-img-wrapper img.contain-fit { object-fit: contain; padding: 10px; background: #fafafa; } 
+        .project-card:hover .project-img-wrapper img { transform: scale(1.05); }
+        
+        .project-body { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+        
+        /* Category Badge */
+        .cat-badge { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 10px; }
+        .cat-tech { background: var(--accent-light); color: var(--accent); }
+        .cat-lit { background: var(--rose-light); color: var(--rose); }
+        
+        .project-title { font-size: 1.25rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+        .project-desc { color: var(--text-light); font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1; }
+        
+        .project-footer { border-top: 1px solid #f1f5f9; padding-top: 1rem; margin-top: auto; display: flex; justify-content: space-between; align-items: center; }
+        .tech-icons { display: flex; gap: 8px; color: var(--text-light); font-size: 1.1rem; }
+        
+        /* Tombol Baca */
+        .btn-read { background: var(--white); color: var(--rose); border: 1px solid var(--rose); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; cursor: pointer; transition: 0.3s; font-weight: 600; text-decoration: none; display: inline-block; }
+        .btn-read:hover { background: var(--rose); color: var(--white); }
+
+        /* --- AWARDS & CERTS --- */
+        .awards-wrapper { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; }
+        .award-card { background: white; padding: 1.5rem; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: var(--shadow-card); transition: 0.3s; display: flex; gap: 1rem; align-items: flex-start; }
+        .award-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+        .award-icon-sm { font-size: 1.8rem; }
+        
+        .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .cert-card { background: white; padding: 2rem; border-radius: 16px; box-shadow: var(--shadow-card); border-top: 5px solid var(--accent); }
+        .score-val { font-size: 2rem; font-weight: 800; color: var(--primary); line-height: 1; }
+
+        /* --- TIMELINE --- */
+        .timeline { max-width: 850px; margin: 0 auto; position: relative; }
+        .timeline-line { position: absolute; left: 24px; top: 0; bottom: 0; width: 3px; background: #e2e8f0; }
+        .timeline-item { padding-left: 60px; position: relative; margin-bottom: 3rem; }
+        .timeline-dot { position: absolute; left: 13px; top: 0; width: 25px; height: 25px; background: var(--accent); border-radius: 50%; border: 4px solid white; box-shadow: 0 0 0 3px #dbeafe; z-index: 2; }
+        .job-card { background: white; padding: 1.5rem; border-radius: 12px; box-shadow: var(--shadow-card); border: 1px solid #e2e8f0; }
+        
+        /* --- SKILLS --- */
+        .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag { background: white; border: 1px solid #e2e8f0; padding: 6px 14px; border-radius: 6px; font-size: 0.9rem; font-weight: 500; color: var(--text-main); }
+        .tag.highlight { background: var(--accent-light); color: var(--accent); border-color: #bfdbfe; font-weight: 600; }
+
+        /* --- CONTACT --- */
+        .contact-box { background: var(--primary); border-radius: 24px; padding: 4rem 2rem; text-align: center; color: white; position: relative; overflow: hidden; }
+        .contact-btn-white { background: white; color: var(--primary); padding: 1rem 3rem; border-radius: 50px; font-weight: 700; text-decoration: none; display: inline-block; margin-top: 2rem; transition: 0.3s; }
+        .contact-btn-white:hover { transform: scale(1.05); }
+
+        footer { background: white; border-top: 1px solid #e2e8f0; padding: 3rem 0; margin-top: 5rem; text-align: center; }
+        .social-links a { font-size: 1.5rem; color: var(--text-light); margin: 0 10px; transition: 0.3s; }
+        .social-links a:hover { color: var(--accent); }
+
+        /* --- MODAL (POPUP READER) --- */
+        .modal {
+            display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%;
+            overflow: auto; background-color: rgba(0,0,0,0.8); backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background-color: #fff; margin: 5% auto; padding: 0; border-radius: 15px;
+            width: 90%; max-width: 800px; position: relative; animation: slideIn 0.4s;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        @keyframes slideIn { from {top: -300px; opacity: 0} to {top: 5%; opacity: 1} }
+        
+        .close { color: white; float: right; font-size: 35px; font-weight: bold; position: absolute; right: 20px; top: 10px; cursor: pointer; transition: 0.3s; }
+        .close:hover { color: var(--accent); }
+        
+        .modal-header { padding: 20px 30px; background: var(--primary); color: white; border-top-left-radius: 15px; border-top-right-radius: 15px; }
+        .modal-body { padding: 30px; max-height: 70vh; overflow-y: auto; font-family: 'Georgia', serif; font-size: 1.1rem; line-height: 1.8; color: #333; }
+        
+        /* Typography for Reader */
+        .reader-text h3 { margin-top: 20px; color: var(--rose); font-family: 'Outfit', sans-serif; }
+        .reader-text p { margin-bottom: 15px; text-align: justify; }
+        .reader-text blockquote { border-left: 4px solid var(--accent); padding-left: 20px; font-style: italic; color: #555; background: #f9f9f9; padding: 15px; margin: 20px 0; }
+
+        @media (max-width: 992px) {
+            .hero-content, .about-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-content { flex-direction: column-reverse; }
+            .hero-img { margin: 0 auto; }
+            .hero-stats { margin: 0 auto 2rem; }
+            .btn-group { justify-content: center; }
+            .nav-menu { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container nav-inner">
+            <a href="#" class="logo"><i class="fas fa-layer-group"></i> Nur<span>Afni</span></a>
+            <ul class="nav-menu">
+                <li><a href="#about" class="nav-link">Profil</a></li>
+                <li><a href="#portfolio" class="nav-link">Karya</a></li>
+                <li><a href="#achievements" class="nav-link">Prestasi</a></li>
+                <li><a href="#certification" class="nav-link">Sertifikasi</a></li>
+                <li><a href="#experience" class="nav-link">Pengalaman</a></li>
+            </ul>
+            <a href="#contact" class="btn-contact">Hubungi Saya</a>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <div class="hero-labels">
+                    <span class="badge badge-gold"><i class="fas fa-crown"></i> Mahasiswa Berprestasi 2023/2024</span>
+                    <span class="badge badge-blue"><i class="fas fa-award"></i> Awardee Beasiswa Pemprov Riau</span>
+                </div>
+                
+                <h1>System Analyst & <br><span>Full Stack Developer</span></h1>
+                <p>
+                    Lulusan Terbaik SMKN 7 Pekanbaru yang kini menjadi Mahasiswa Sistem Informasi UNILAK. 
+                    Menggabungkan logika <strong>Informatika</strong>, ketelitian <strong>Matematika</strong>, dan keindahan <strong>Sastra</strong> dalam setiap karya.
+                </p>
+
+                <div class="hero-stats">
+                    <div class="stat">
+                        <h4>640</h4>
+                        <p>Skor TOEFL ITP</p>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <h4>BNSP</h4>
+                        <p>Certified Network</p>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <h4>10+</h4>
+                        <p>Penghargaan</p>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <a href="#portfolio" class="btn-primary">Lihat Galeri Karya <i class="fas fa-arrow-right"></i></a>
+                    <a href="cv nur afni.pdf" class="btn-outline" download>Unduh CV <i class="fas fa-download"></i></a>
+                </div>
+            </div>
+            
+            <div class="hero-img-box">
+                <img src="nur.png" alt="Nur Afni" class="hero-img">
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>Profil Akademik</h2>
+                <p>Dedikasi pada pendidikan dan pengembangan diri.</p>
+            </div>
+            <div class="about-grid">
+                <div>
+                    <h3 style="margin-bottom: 1rem; color: var(--primary);">Nur Afni</h3>
+                    <p style="color: var(--text-light); margin-bottom: 1.5rem;">
+                        Saya adalah seorang <strong>Tech Enthusiast</strong> yang lahir di Pekanbaru, 17 Maret 2005. 
+                        Memiliki passion yang kuat di bidang Informatika, Matematika, dan Sastra. Dikenal sebagai pribadi yang analitis, komunikatif, dan selalu ingin belajar hal baru.
+                    </p>
+                    
+                    <div class="tag-cloud">
+                        <span class="tag highlight">Informatika & Jaringan</span>
+                        <span class="tag highlight">Matematika & Data</span>
+                        <span class="tag highlight">Sastra & Penulisan</span>
+                        <span class="tag">Jepang & Arab</span>
+                        <span class="tag">Anime & Edukasi</span>
+                    </div>
+
+                    <div style="margin-top: 2rem;">
+                         <p style="margin-bottom: 5px;"><strong>Kontak:</strong></p>
+                         <p style="color: var(--text-main);"><i class="fas fa-envelope text-accent"></i> nurrfnii173@gmail.com</p>
+                         <p style="color: var(--text-main);"><i class="fas fa-phone text-accent"></i> +62-8953-9316-1155</p>
+                         <p style="color: var(--text-main);"><i class="fas fa-map-marker-alt text-accent"></i> Jl. Pesisir, Rumbai, Pekanbaru</p>
+                    </div>
+                </div>
+
+                <div class="education-box">
+                    <h4 style="margin-bottom: 1.5rem; color: var(--primary);">Riwayat Pendidikan</h4>
+                    <ul class="education-list">
+                        <li>
+                            <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+                            <div class="edu-info">
+                                <h5>S1 Sistem Informasi</h5>
+                                <p>Universitas Lancang Kuning (2023 - Sekarang)</p>
+                                <span style="font-size: 0.8rem; color: var(--gold); font-weight: 600;">Mahasiswa Berprestasi Akademik</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="edu-icon"><i class="fas fa-school"></i></div>
+                            <div class="edu-info">
+                                <h5>Teknik Komputer & Jaringan</h5>
+                                <p>SMKN 7 Pekanbaru (2020 - 2023)</p>
+                                <span style="font-size: 0.8rem; color: var(--success); font-weight: 600;">Lulusan Terbaik</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="edu-icon"><i class="fas fa-book-reader"></i></div>
+                            <div class="edu-info">
+                                <h5>Sekolah Menengah Pertama</h5>
+                                <p>SMPN 27 Pekanbaru (2017-2020)</p>
+                                <span style="font-size: 0.8rem; color: var(--accent); font-weight: 600;">Juara Umum 3 Tingkat Sekolah</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="edu-icon"><i class="fas fa-child"></i></div>
+                            <div class="edu-info">
+                                <h5>Sekolah Dasar</h5>
+                                <p>SDN 63 Pekanbaru (2011-2017)</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="portfolio" style="background: #f8fafc;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Galeri Karya & Project</h2>
+                <p>Kombinasi solusi teknologi (Web/App) dan karya sastra yang bisa dibaca.</p>
+            </div>
+                <div class="project-card">
+                    <div class="project-img-wrapper">
+                        <img src="Biru Langit Novel Book Cover.png" alt="Novel Langkah dari Luka" class="contain-fit" style="background: #eef2ff;">
+                    </div>
+                    <div class="project-body">
+                        <span class="cat-badge cat-lit">Novel Fiksi</span>
+                        <h3 class="project-title">Langkah dari Luka, Menuju Cahaya</h3>
+                        <p class="project-desc">Sebuah kisah tentang penyembuhan luka batin dan menemukan harapan di tengah kegelapan.</p>
+                        <div class="project-footer" style="justify-content: center;">
+                            <button onclick="openModal('novelModal')" class="btn-read"><i class="fas fa-book-open"></i> Baca Cuplikan</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-wrapper" style="background: #fff1f2; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-file-alt" style="font-size: 4rem; color: #e11d48;"></i>
+                    </div>
+                    <div class="project-body">
+                        <span class="cat-badge cat-lit">Esai Ilmiah</span>
+                        <h3 class="project-title">Ekonomi Sirkuler</h3>
+                        <p class="project-desc">Juara 2 Esai Provinsi Riau. Membahas pentingnya daur ulang dan ekonomi berkelanjutan.</p>
+                        <div class="project-footer" style="justify-content: center;">
+                            <button onclick="openModal('essayModal')" class="btn-read"><i class="fas fa-glasses"></i> Baca Esai</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-wrapper" style="background: #f0fdf4; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-leaf" style="font-size: 4rem; color: #059669;"></i>
+                    </div>
+                    <div class="project-body">
+                        <span class="cat-badge cat-lit" style="background: #dcfce7; color: #166534;">Esai Reflektif</span>
+                        <h3 class="project-title">Jejak Langkah Nur Afni</h3>
+                        <p class="project-desc">Refleksi perjalanan hidup dari Lulusan Terbaik SMKN 7, prestasi, hingga menjadi mahasiswa IT.</p>
+                        <div class="project-footer" style="justify-content: center;">
+                            <button onclick="openModal('lifeModal')" class="btn-read"><i class="fas fa-user-circle"></i> Baca Kisah</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="achievements" style="background: white;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Hall of Fame</h2>
+                <p>Rekam jejak prestasi dari tingkat Sekolah hingga Nasional.</p>
+            </div>
+
+            <div class="awards-wrapper">
+                <div class="award-card" style="border-left: 5px solid #94a3b8;">
+                    <div class="award-icon-sm text-gold"><i class="fas fa-medal" style="color: #94a3b8;"></i></div>
+                    <div><h4 style="font-weight: 700;">Medali Perak KSBN 2022</h4><p style="font-size: 0.9rem; color: var(--text-light);">Kompetisi Siswa Berprestasi Nasional</p></div>
+                </div>
+                <div class="award-card" style="border-left: 5px solid #94a3b8;">
+                    <div class="award-icon-sm"><i class="fas fa-medal" style="color: #94a3b8;"></i></div>
+                    <div><h4 style="font-weight: 700;">Medali Perak POSN 2024</h4><p style="font-size: 0.9rem; color: var(--text-light);">Pekan Olimpiade Sains Nasional - Komputer</p></div>
+                </div>
+                <div class="award-card" style="border-left: 5px solid #fbbf24;">
+                    <div class="award-icon-sm"><i class="fas fa-trophy" style="color: #fbbf24;"></i></div>
+                    <div><h4 style="font-weight: 700;">Gold Medal OSAN 2022</h4><p style="font-size: 0.9rem; color: var(--text-light);">Olimpiade Sains Akbar Nasional (MTK & Komp)</p></div>
+                </div>
+                <div class="award-card" style="border-left: 5px solid #94a3b8;">
+                    <div class="award-icon-sm"><i class="fas fa-medal" style="color: #94a3b8;"></i></div>
+                    <div><h4 style="font-weight: 700;">Silver Medal IISC 2022</h4><p style="font-size: 0.9rem; color: var(--text-light);">International/National Science Competition</p></div>
+                </div>
+                <div class="award-card" style="border-left: 5px solid #b45309;">
+                    <div class="award-icon-sm"><i class="fas fa-medal" style="color: #b45309;"></i></div>
+                    <div><h4 style="font-weight: 700;">Bronze Medal OSN 2023</h4><p style="font-size: 0.9rem; color: var(--text-light);">Olimpiade Sains Nasional - Informatika</p></div>
+                </div>
+                <div class="award-card" style="border-left: 5px solid var(--accent);">
+                    <div class="award-icon-sm text-accent"><i class="fas fa-pen-nib"></i></div>
+                    <div><h4 style="font-weight: 700;">Juara 2 Esai (2024)</h4><p style="font-size: 0.9rem; color: var(--text-light);">Kompetisi Tingkat Provinsi Riau</p></div>
+                </div>
+                <div class="award-card" style="border-left: 5px solid var(--accent);">
+                    <div class="award-icon-sm text-accent"><i class="fas fa-palette"></i></div>
+                    <div><h4 style="font-weight: 700;">Juara 2 Poster (2025)</h4><p style="font-size: 0.9rem; color: var(--text-light);">Pentas Seni se-Indonesia UNILAK</p></div>
+                </div>
+                <div class="award-card" style="border-left: 5px solid var(--gold);">
+                    <div class="award-icon-sm text-gold"><i class="fas fa-graduation-cap"></i></div>
+                    <div><h4 style="font-weight: 700;">Awardee Beasiswa Prestasi</h4><p style="font-size: 0.9rem; color: var(--text-light);">Pemerintah Provinsi Riau 2023</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="certification" style="background: #f8fafc;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Sertifikasi & Lisensi</h2>
+                <p>Validasi kompetensi profesional.</p>
+            </div>
+            <div class="cert-grid">
+                <div class="cert-card bnsp">
+                    <div class="cert-top"><i class="fas fa-certificate fa-2x" style="color: var(--success);"></i><span class="badge badge-green">Nasional</span></div>
+                    <h3 style="color: var(--primary);">Sertifikasi BNSP 2023</h3><p style="color: var(--text-light); margin-bottom: 1rem;">Bidang Network (Jaringan Komputer).</p>
+                </div>
+                <div class="cert-card toefl">
+                    <div class="cert-top"><i class="fas fa-globe fa-2x" style="color: var(--gold);"></i><div class="score-box"><div class="score-val">640</div><div class="score-label">TOEFL ITP</div></div></div>
+                    <h3 style="color: var(--primary);">English Proficiency</h3><p style="color: var(--text-light);">Penyelenggara: <strong>Sekolah.mu</strong>.</p>
+                </div>
+                <div class="cert-card" style="border-top-color: #64748b;">
+                    <div class="cert-top"><i class="fas fa-history fa-2x" style="color: #64748b;"></i><div class="score-box"><div class="score-val" style="color:#64748b; font-size: 1.5rem;">443</div><div class="score-label">TOEFL ITP (2021)</div></div></div>
+                    <h3 style="color: var(--text-main);">Initial Progress</h3><p style="color: var(--text-light);">Penyelenggara: <strong>Mr. Toefl ID</strong>.</p>
+                </div>
+                <div class="cert-card" style="border-top-color: var(--accent);">
+                    <div class="cert-top"><i class="fas fa-laptop-code fa-2x text-accent"></i><span class="badge badge-blue">Upskilling</span></div>
+                    <h3 style="color: var(--primary);">Bootcamp Alumni</h3>
+                    <div class="tag-cloud" style="margin-top: 10px;">
+                        <span class="tag">Dicoding (Web)</span><span class="tag">DQLab (Data)</span><span class="tag">Dibimbing.id (UI/UX)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="experience" style="background: white;">
+        <div class="container">
+            <div class="section-header"><h2>Pengalaman & Keahlian</h2></div>
+            <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 3rem;">
+                <div class="timeline">
+                    <div class="timeline-line"></div>
+                    <div class="timeline-item"><div class="timeline-dot"></div><div class="job-card"><div class="job-header"><span class="job-title">IT Intern (NBAD)</span><span class="job-date">Terbaru</span></div><span class="job-company">PT. Telkomsel Pekanbaru</span><ul style="margin-top: 10px; padding-left: 20px; font-size: 0.95rem; color: var(--text-main);"><li>Pengembangan Web Dashboard Monitoring Jaringan.</li><li>Pembuatan Bot Telegram Automasi Laporan.</li><li>Data Mining Analisis Broadband.</li><li>Aplikasi Internal Manajemen Tugas.</li></ul></div></div>
+                    <div class="timeline-item"><div class="timeline-dot"></div><div class="job-card"><div class="job-header"><span class="job-title">Magang (Prakerin)</span><span class="job-date">2022</span></div><span class="job-company">Dinas Perpustakaan & Arsip Riau</span><p style="font-size: 0.95rem; margin-top: 5px;">Manajemen arsip digital dan database perpustakaan.</p></div></div>
+                    <div class="timeline-item"><div class="timeline-dot"></div><div class="job-card"><div class="job-header"><span class="job-title">Freelance Creative</span><span class="job-date">2021 - Sekarang</span></div><span class="job-company">Self-Employed</span><p style="font-size: 0.95rem; margin-top: 5px;">Jasa Desain Grafis, Pengetikan, dan Editing Dokumen.</p></div></div>
+                </div>
+                <div>
+                    <div class="job-card" style="margin-bottom: 2rem;"><h4 style="margin-bottom: 1rem; color: var(--primary);">Hard Skills</h4><div class="tag-cloud"><span class="tag highlight">Laravel</span><span class="tag highlight">React Native</span><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">HTML/CSS/JS</span><span class="tag">Data Mining</span><span class="tag">Telegram Bot API</span></div></div>
+                    <div class="job-card"><h4 style="margin-bottom: 1rem; color: var(--primary);">Soft Skills & Tools</h4><div class="tag-cloud"><span class="tag">Analitis</span><span class="tag">Komunikasi</span><span class="tag">Teamwork</span><span class="tag">Postman</span><span class="tag">Figma</span><span class="tag">Git</span><span class="tag">VS Code</span></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="contact">
+        <div class="container">
+            <div class="contact-box">
+                <h2>Mari Wujudkan Solusi Digital</h2>
+                <p style="opacity: 0.9; max-width: 600px; margin: 1rem auto;">Saya terbuka untuk kolaborasi proyek pengembangan web, analisis sistem, atau penulisan kreatif.</p>
+                <div style="margin-top: 1.5rem; font-size: 1.2rem;"><span><i class="fab fa-whatsapp"></i> +62-8953-9316-1155</span><span style="margin: 0 15px;">|</span><span><i class="fas fa-envelope"></i> nurrfnii173@gmail.com</span></div>
+                <a href="https://wa.me/62895393161155" class="contact-btn-white">Hubungi Saya</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.instagram.com/_nurrfnii17?igsh=MWlpcGE0OWc5bG1nZw==" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/nur-afni-ab41b529a" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/afninur3470" title="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+            <p style="margin-top: 1rem;">&copy; 2025 Nur Afni. System Analyst & Developer.</p>
+        </div>
+    </footer>
+
+    <div id="novelModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" onclick="closeModal('novelModal')">&times;</span>
+                <h2>Langkah dari Luka, Menuju Cahaya</h2>
+            </div>
+            <div class="modal-body reader-text">
+                <p><strong>Sinopsis:</strong></p>
+                <p>Di bawah langit yang tak selalu biru, ada hati yang terus berusaha menyembuhkan diri. Novel ini mengisahkan perjalanan seorang gadis yang mencoba bangkit dari trauma masa lalu, menemukan kekuatan dalam kerapuhan, dan akhirnya melihat cahaya di ujung terowongan gelap kehidupannya.</p>
+                <hr>
+                <h3>Bab 1: Goresan Pertama</h3>
+                <p>Hujan turun deras malam itu, seolah langit turut menangis bersama luka yang tak kasat mata. Aku duduk di sudut kamar, memeluk lutut, sementara suara guntur bersahutan dengan detak jantungku yang tak beraturan.</p>
+                <p>"Semua akan baik-baik saja," bisikku pada diri sendiri, sebuah mantra yang sudah ribuan kali kuucapkan namun tak kunjung menjadi nyata. Di luar sana, dunia terus berputar, orang-orang tertawa, tapi di sini, waktu seolah berhenti tepat saat kepingan hatiku hancur.</p>
+                <p>Aku menatap ke luar jendela. Lampu jalan yang remang-remang membiaskan cahaya di genangan air. Sama seperti harapanku, redup namun masih ada. Mungkin, hanya mungkin, esok pagi matahari akan bersinar sedikit lebih terang untukku.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="essayModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" onclick="closeModal('essayModal')">&times;</span>
+                <h2>Ekonomi Sirkuler: Masa Depan Riau</h2>
+            </div>
+            <div class="modal-body reader-text">
+                <blockquote>"Sampah bukan lagi masalah, melainkan sumber daya yang tertunda."</blockquote>
+                <h3>Pendahuluan</h3>
+                <p>Provinsi Riau, dengan kekayaan sumber daya alamnya, menghadapi tantangan besar dalam pengelolaan limbah industri dan rumah tangga. Konsep ekonomi linear "ambil-buat-buang" sudah tidak lagi relevan. Saatnya kita beralih ke Ekonomi Sirkuler.</p>
+                <h3>Gagasan Utama</h3>
+                <p>Ekonomi sirkuler menawarkan pendekatan regeneratif. Dalam konteks Riau, limbah kelapa sawit dapat diolah menjadi biomassa atau kerajinan bernilai tinggi. Plastik tidak hanya didaur ulang, tapi dirancang ulang agar bisa dipakai terus menerus.</p>
+                <h3>Kesimpulan</h3>
+                <p>Penerapan ekonomi sirkuler bukan sekadar tren hijau, melainkan kebutuhan mendesak untuk menjaga keberlanjutan lingkungan sekaligus membuka peluang ekonomi kreatif baru bagi generasi muda Riau.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="lifeModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" onclick="closeModal('lifeModal')">&times;</span>
+                <h2>Jejak Langkah Nur Afni</h2>
+            </div>
+            <div class="modal-body reader-text">
+                <h3>Awal Mula: Dari SMKN 7 Menuju Dunia Digital</h3>
+                <p>Perjalanan saya di dunia teknologi dimulai sejak duduk di bangku <strong>SMKN 7 Pekanbaru</strong> jurusan TKJ (Teknik Komputer & Jaringan). Di sanalah saya jatuh cinta pada dunia jaringan dan logika komputer. Ketekunan membawa saya menjadi <strong>Lulusan Terbaik</strong>, sebuah batu loncatan yang meyakinkan saya untuk melangkah lebih jauh.</p>
+                
+                <h3>Harmoni Logika dan Rasa</h3>
+                <p>Banyak yang bertanya, "Kenapa orang IT suka sastra?". Bagi saya, coding dan menulis itu mirip. Keduanya menyusun struktur untuk menyampaikan pesan. Coding untuk mesin, sastra untuk jiwa manusia. Keseimbangan inilah yang membuat saya tetap waras di tengah rumitnya algoritma.</p>
+                
+                <h3>Mimpi Masa Depan</h3>
+                <p>Kini, sebagai mahasiswa Sistem Informasi di <strong>Universitas Lancang Kuning</strong> dan penerima <strong>Beasiswa Prestasi Pemerintah Provinsi Riau</strong>, tanggung jawab saya semakin besar. Pengalaman magang di <strong>Telkomsel</strong> membuka mata saya tentang dampak nyata teknologi.</p>
+                <p>Saya bermimpi menjadi System Analyst yang tidak hanya andal secara teknis, tetapi juga memiliki empati dalam merancang solusi yang manusiawi dan bermanfaat bagi masyarakat luas.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal Logic
+        function openModal(id) {
+            document.getElementById(id).style.display = "block";
+            document.body.style.overflow = "hidden"; // Disable scroll background
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = "none";
+            document.body.style.overflow = "auto"; // Enable scroll background
+        }
+
+        // Close modal when clicking outside box
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        }
+    </script>
+
+</body>
+</html>
